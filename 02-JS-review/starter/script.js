@@ -1,3 +1,13 @@
+// Dom Elements
+// const movieTitle = document.getElementById("title");
+// const releaseDate = document.getElementById("date");
+// const page = document.getElementById("pages");
+// const director = document.getElementById("director");
+// const review = document.getElementById("reviews");
+// const rate = document.getElementById("rate");
+// const genre = document.getElementById("genres");
+// const translation = document.getElementById("translations");
+
 const data = [
   {
     id: 1,
@@ -143,21 +153,133 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-// Destructring
-
+// const {
+//   title,
+//   publicationDate,
+//   pages,
+//   genres,
+//   reviews,
+//   translations,
+//   author,
+//   librarything,
+// } = data;
 const book = getBook(5);
+
 const {
   title,
   author,
   genres,
+  pages,
   reviews,
   publicationDate,
   hasMovieAdaptation,
   translations,
+  // librarything,
 } = book;
-console.log(book.genres);
-console.log(book.reviews);
+const books = document.getElementById("book");
+books.innerHTML = `
+    
+      <div
+      class="flex flex-col justify-center items-center absolute top-8 left-0 w-full"
+      >
+          <h1
+            class="text-xl text-black-500 font-bold bg-purple-200 p-2 rounded-lg text-purple-700"
+            id="title"
+            >
+            ${title}
+            </h1>
+            </div>
+            <h2 class="text-lg font-medium bg-red-300 text-red-700 p-2 rounded-xl">
+            Release date <span id="date">${publicationDate}</span>
+            </h2>
+            <p
+            class="text-lg font-medium bg-green-300 text-green-700 p-2 rounded-xl"
+            >
+            Pages: <span id="pages">${pages}</span>
+            </p>
+            <p
+            class="text-lg font-medium bg-amber-300 text-amber-700 p-2 rounded-xl"
+            >
+            Director: <span id="director">${author}</span>
+            </p>
+            <p
+            class="text-lg font-medium bg-yellow-300 text-yellow-700 p-2 rounded-xl"
+            >
+            Reviews: <span id="reviews">${reviews.goodreads.rating}</span>
+            </p>
+            <p class="text-lg font-medium bg-gray-300 text-black p-2 rounded-xl">
+            library Rating: <span id="rate">${reviews.librarything.rating}</span>
+            </p>
+            <div
+            class="absolute bottom-16 left-0 w-full flex flex-row justify-around items-center"
+            >
+            <ul class="bg-blue-100 p-4 rounded-xl flex gap-2" id="genres">
+            <li
+            class="bg-blue-300 p-2 rounded-xl text-blue-800 font-medium text-md"
+            >
+            Genres
+            </li>
+            <li
+            class="bg-blue-300 p-2 rounded-xl text-blue-800 font-medium text-md"
+            >
+            Genres
+            </li>
+            <li
+            class="bg-blue-300 p-2 rounded-xl text-blue-800 font-medium text-md"
+            >
+            Genres
+            </li>
+            <li
+            class="bg-blue-300 p-2 rounded-xl text-blue-800 font-medium text-md"
+            >
+            Genres
+            </li>
+            </ul>
+            <ul class="bg-blue-100 p-4 rounded-xl flex gap-2" id="translation">
+            <li
+            class="bg-blue-300 p-2 rounded-xl text-blue-800 font-medium text-md"
+            >
+              Translation
+              </li>
+              <li
+              class="bg-blue-300 p-2 rounded-xl text-blue-800 font-medium text-md"
+              >
+              Translation
+              </li>
+              <li
+              class="bg-blue-300 p-2 rounded-xl text-blue-800 font-medium text-md"
+              >
+              Translation
+              </li>
+              <li
+              class="bg-blue-300 p-2 rounded-xl text-blue-800 font-medium text-md"
+              >
+              Translation
+              </li>
+              </ul>
+              </div>
+              </div>
+             
+`;
+
+// books.appendChild(book);
+
+// Destructring
+
+// console.log(book.genres);
+// console.log(book.reviews);
 
 const [first, second, ...third] = genres;
+const moreGenres = [...genres, "drama", "romance"];
 
-console.log(first, second, third);
+// console.log(first, second, third);
+console.log(moreGenres);
+
+const templateLiterals = `The book ${title} was written by ${author} and has ${pages} pages with ${
+  207600 - 598
+} fans worldwide, it was published on ${
+  publicationDate.split("-")[0]
+} and has a rating of ${reviews.goodreads.rating} on Goodreads`;
+console.log(templateLiterals);
+
+const updatedBook = { ...book, games: 25 };
