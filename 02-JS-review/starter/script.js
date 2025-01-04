@@ -295,3 +295,8 @@ console.log(templateLiterals);
 reviews.librarything.reviewsCount > 2000
   ? console.log(`${title} is popular`)
   : console.log(`${title} is not popular`);
+
+// ShortCircuting and Logical-Operators
+// console.log(hasMovieAdaptation && "false");
+console.log(false && "nothis");
+console.log(false || "nothis");
