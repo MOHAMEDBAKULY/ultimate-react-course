@@ -163,7 +163,7 @@ function getBook(id) {
 //   author,
 //   librarything,
 // } = data;
-const book = getBook(5);
+const book = getBook(2);
 
 const {
   title,
@@ -300,3 +300,9 @@ reviews.librarything.reviewsCount > 2000
 // console.log(hasMovieAdaptation && "false");
 console.log(false && "nothis");
 console.log(false || "nothis");
+
+// Nullish Coalescing Operator
+const wrongCount = reviews.librarything.reviewsCount || "Zero Count";
+console.log(wrongCount);
+const goodCount = reviews.librarything.reviewsCount ?? "Zero Count";
+console.log(goodCount);
