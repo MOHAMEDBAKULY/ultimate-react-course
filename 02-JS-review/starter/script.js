@@ -275,11 +275,23 @@ const moreGenres = [...genres, "drama", "romance"];
 // console.log(first, second, third);
 console.log(moreGenres);
 
+// Arrow Functions
+const getYear = (date) => date.split("-")[0];
+
+// Template Literals
 const templateLiterals = `The book ${title} was written by ${author} and has ${pages} pages with ${
   207600 - 598
-} fans worldwide, it was published on ${
-  publicationDate.split("-")[0]
-} and has a rating of ${reviews.goodreads.rating} on Goodreads`;
+} fans worldwide, it was published on ${getYear(
+  publicationDate
+)} and has a rating of ${reviews.goodreads.rating} on Goodreads ${
+  hasMovieAdaptation ? "has movie adaptation" : "no movie adaptation"
+}`;
 console.log(templateLiterals);
 
-const updatedBook = { ...book, games: 25 };
+// const updatedBook = { ...book, games: 25 };
+
+// Itenery Operator
+
+reviews.librarything.reviewsCount > 2000
+  ? console.log(`${title} is popular`)
+  : console.log(`${title} is not popular`);
