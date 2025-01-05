@@ -175,7 +175,7 @@ const hasMovie = books
 const bookRates = books
   .filter((book) => book.reviews.goodreads.ratingsCount > 900000)
   .map((b) => b.author);
-console.log(bookRates);
+// console.log(bookRates);
 
 // Using the Reduce method
 const allRatings = books.reduce(
@@ -194,7 +194,7 @@ const sortArr = digits
   .sort((a, b) => b - a)
   .map((num) => num + 4)
   .filter((y) => y % 2 === 0);
-console.log(sortArr);
+// console.log(sortArr);
 
 // Sorting Books by date
 const year = () => {
@@ -205,7 +205,55 @@ const sortByDate = books.sort((a, b) => {
   a.publicationDate.split("-")[0] - b.publicationDate.split("-")[0];
 });
 
-console.log(sortByDate);
+// console.log(sortByDate);
+
+// Adding a new Book
+
+const newBook = {
+  id: 6,
+  title: "Legends of Tomorrow",
+  publicationDate: "2014-08-01",
+  author: "George Nolan",
+  genres: ["fantasy", "high-fantasy", "Triller", "fantasy fiction"],
+  hasMovieAdaptation: true,
+  pages: 902,
+  translations: {
+    korean: "왕좌의 게임",
+    polish: "Gra o tron",
+    portuguese: "A Guerra dos Tronos",
+    spanish: "Juego de tronos",
+  },
+  reviews: {
+    goodreads: {
+      rating: 6.44,
+      ratingsCount: 2295233,
+      reviewsCount: 59058,
+    },
+    librarything: {
+      rating: 8.36,
+      ratingsCount: 38358,
+      reviewsCount: 1095,
+    },
+  },
+};
+
+// A new Book Array
+const allBooks = [...books, newBook];
+console.log(allBooks.length);
+const booktitle = allBooks.map((book) => book.title.toUpperCase());
+console.log(booktitle);
+
+// Deleting a book in the new Array
+const deleteBook = allBooks.filter((book) => book.id !== 5);
+console.log(deleteBook);
+
+// Update the A book in the array
+const updateBook = deleteBook.map((book) =>
+  book.id === 4
+    ? { ...book, author: "Mohamed Bakuly", publicationDate: "Not Availble" }
+    : book
+);
+console.log(updateBook);
 
 // console.log(details);
 
