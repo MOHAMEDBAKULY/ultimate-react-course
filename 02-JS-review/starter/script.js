@@ -153,6 +153,7 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 const books = getBooks();
 
 const nums = [10, 20, 30, 40, 50, 60, 70, 80].map((num) => num - 7);
@@ -254,6 +255,7 @@ const updateBook = deleteBook.map((book) =>
     : book
 );
 console.log(updateBook);
+*/
 
 // console.log(details);
 
@@ -422,3 +424,8 @@ const getReviewCount = (book) => {
 
 console.log(getReviewCount(book));
 */
+
+// Fetching data with promises
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data.filter((todo) => todo.id < 10)));
