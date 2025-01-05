@@ -184,8 +184,28 @@ const allRatings = books.reduce(
 );
 
 const averageRating = allRatings / books.length;
-console.log(allRatings);
-console.log(averageRating);
+// console.log(allRatings);
+// console.log(averageRating);
+
+// Using the sort Array Method
+const digits = [2, 5, 1, 2, 10, 4, 0, 0, 1, 4, 3, 3, 6, 9, 8, 7];
+const sortArr = digits
+  .slice()
+  .sort((a, b) => b - a)
+  .map((num) => num + 4)
+  .filter((y) => y % 2 === 0);
+console.log(sortArr);
+
+// Sorting Books by date
+const year = () => {
+  books.publicationDate.split("-")[0];
+};
+
+const sortByDate = books.sort((a, b) => {
+  a.publicationDate.split("-")[0] - b.publicationDate.split("-")[0];
+});
+
+console.log(sortByDate);
 
 // console.log(details);
 
