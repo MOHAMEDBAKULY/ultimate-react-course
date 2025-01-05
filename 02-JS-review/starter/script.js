@@ -157,6 +157,7 @@ const books = getBooks();
 
 const nums = [10, 20, 30, 40, 50, 60, 70, 80].map((num) => num - 7);
 
+// Using the map Method
 const details = books.map((book) => {
   return `The book was published on ${
     book.publicationDate.split("-")[0]
@@ -170,10 +171,21 @@ const hasMovie = books
   .filter((b) => b.id > 2);
 // console.log(hasMovie);
 
+// Using filter method
 const bookRates = books
   .filter((book) => book.reviews.goodreads.ratingsCount > 900000)
   .map((b) => b.author);
 console.log(bookRates);
+
+// Using the Reduce method
+const allRatings = books.reduce(
+  (acc, cur) => acc + cur.reviews.goodreads.rating,
+  0
+);
+
+const averageRating = allRatings / books.length;
+console.log(allRatings);
+console.log(averageRating);
 
 // console.log(details);
 
