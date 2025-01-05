@@ -163,9 +163,21 @@ const details = books.map((book) => {
   } and has ${book.pages} pages`;
 });
 
-console.log(details);
+const hasMovie = books
+  .filter((book) =>
+    book.hasMovieAdaptation ? `${book.title} has a movie` : ""
+  )
+  .filter((b) => b.id > 2);
+// console.log(hasMovie);
 
-console.log(nums);
+const bookRates = books
+  .filter((book) => book.reviews.goodreads.ratingsCount > 900000)
+  .map((b) => b.author);
+console.log(bookRates);
+
+// console.log(details);
+
+// console.log(nums);
 
 // const {
 //   title,
