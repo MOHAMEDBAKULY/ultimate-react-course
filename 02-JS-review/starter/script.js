@@ -163,7 +163,7 @@ function getBook(id) {
 //   author,
 //   librarything,
 // } = data;
-const book = getBook(2);
+const book = getBook(3);
 
 const {
   title,
@@ -208,7 +208,7 @@ books.innerHTML = `
             Reviews: <span id="reviews">${reviews.goodreads.rating}</span>
             </p>
             <p class="text-lg font-medium bg-gray-300 text-black p-2 rounded-xl">
-            library Rating: <span id="rate">${reviews.librarything.rating}</span>
+            library Rating: <span id="rate">${reviews.goodreads.rating}</span>
             </p>
             <div
             class="absolute bottom-16 left-0 w-full flex flex-row justify-around items-center"
@@ -273,7 +273,7 @@ const [first, second, ...third] = genres;
 const moreGenres = [...genres, "drama", "romance"];
 
 // console.log(first, second, third);
-console.log(moreGenres);
+// console.log(moreGenres);
 
 // Arrow Functions
 const getYear = (date) => date.split("-")[0];
@@ -286,23 +286,32 @@ const templateLiterals = `The book ${title} was written by ${author} and has ${p
 )} and has a rating of ${reviews.goodreads.rating} on Goodreads ${
   hasMovieAdaptation ? "has movie adaptation" : "no movie adaptation"
 }`;
-console.log(templateLiterals);
+// console.log(templateLiterals);
 
 // const updatedBook = { ...book, games: 25 };
 
 // Itenery Operator
 
-reviews.librarything.reviewsCount > 2000
+reviews.goodreads.reviewsCount > 2000
   ? console.log(`${title} is popular`)
   : console.log(`${title} is not popular`);
 
 // ShortCircuting and Logical-Operators
 // console.log(hasMovieAdaptation && "false");
 console.log(false && "nothis");
-console.log(false || "nothis");
+// console.log(false || "nothis");
 
 // Nullish Coalescing Operator
-const wrongCount = reviews.librarything.reviewsCount || "Zero Count";
-console.log(wrongCount);
-const goodCount = reviews.librarything.reviewsCount ?? "Zero Count";
-console.log(goodCount);
+const wrongCount = reviews.goodreads.reviewsCount || "Zero Count";
+// console.log(wrongCount);
+const goodCount = reviews.goodreads.reviewsCount ?? "Zero Count";
+// console.log(goodCount);
+
+// Optional Chaining
+const getReviewCount = (book) => {
+  const reads = book.reviews?.goodreads?.reviewsCount;
+  const library = book.reviews?.librarything?.reviewsCount ?? 0;
+  return reads + library;
+};
+
+console.log(getReviewCount(book));
